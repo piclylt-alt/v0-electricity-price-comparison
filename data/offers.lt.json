@@ -1,0 +1,110 @@
+[
+  {
+    "id": "enefit-fiksuotas-12",
+    "supplierName": "Enefit",
+    "planName": "Fiksuotas 12",
+    "planType": "fixed",
+    "termMonths": 12,
+    "priceEurKwh": 0.189,
+    "monthlyFeeEur": 1.45,
+    "notes": "Populiariausias planas naujiems klientams",
+    "lastUpdatedISO": "2026-02-15T10:00:00Z",
+    "redirectUrl": "https://www.enefit.lt/elektra/fiksuotas-12?utm_source=palygink&utm_medium=affiliate"
+  },
+  {
+    "id": "ignitis-žalia-24",
+    "supplierName": "Ignitis",
+    "planName": "Žalia energija 24",
+    "planType": "fixed",
+    "termMonths": 24,
+    "priceEurKwh": 0.199,
+    "monthlyFeeEur": 0,
+    "notes": "100% atsinaujinanti energija",
+    "lastUpdatedISO": "2026-02-14T08:30:00Z",
+    "redirectUrl": "https://www.ignitis.lt/elektra/zalia-24?utm_source=palygink&utm_medium=affiliate"
+  },
+  {
+    "id": "perlas-energija-kintama",
+    "supplierName": "Perlas Energija",
+    "planName": "Kintama kaina",
+    "planType": "variable",
+    "termMonths": null,
+    "priceEurKwh": 0.175,
+    "monthlyFeeEur": 2.49,
+    "notes": "Kaina keičiasi kas mėnesį pagal biržą",
+    "lastUpdatedISO": "2026-02-15T12:00:00Z",
+    "redirectUrl": "https://www.perlasenergija.lt/kintama?utm_source=palygink&utm_medium=affiliate"
+  },
+  {
+    "id": "elektrum-stabilus-36",
+    "supplierName": "Elektrum",
+    "planName": "Stabilus 36",
+    "planType": "fixed",
+    "termMonths": 36,
+    "priceEurKwh": 0.209,
+    "monthlyFeeEur": 0,
+    "notes": "Ilgalaikis planas be mėnesinio mokesčio",
+    "lastUpdatedISO": "2026-02-13T14:00:00Z",
+    "redirectUrl": "https://www.elektrum.lt/stabilus-36?utm_source=palygink&utm_medium=affiliate"
+  },
+  {
+    "id": "eso-bazinis",
+    "supplierName": "ESO",
+    "planName": "Bazinis planas",
+    "planType": "variable",
+    "termMonths": null,
+    "priceEurKwh": 0.215,
+    "monthlyFeeEur": 0,
+    "notes": "Visuomeninis tiekimas",
+    "lastUpdatedISO": "2026-02-12T09:00:00Z",
+    "redirectUrl": "https://www.eso.lt/bazinis?utm_source=palygink&utm_medium=affiliate"
+  },
+  {
+    "id": "ignitis-fiksuotas-12",
+    "supplierName": "Ignitis",
+    "planName": "Fiksuotas 12",
+    "planType": "fixed",
+    "termMonths": 12,
+    "priceEurKwh": 0.195,
+    "monthlyFeeEur": 1.00,
+    "notes": "Stabili kaina 12 mėnesių",
+    "lastUpdatedISO": "2026-02-14T08:30:00Z",
+    "redirectUrl": "https://www.ignitis.lt/elektra/fiksuotas-12?utm_source=palygink&utm_medium=affiliate"
+  },
+  {
+    "id": "enefit-kintama",
+    "supplierName": "Enefit",
+    "planName": "Biržos kaina+",
+    "planType": "variable",
+    "termMonths": null,
+    "priceEurKwh": 0.168,
+    "monthlyFeeEur": 1.99,
+    "notes": "Biržos kaina su nedidele marža",
+    "lastUpdatedISO": "2026-02-15T10:00:00Z",
+    "redirectUrl": "https://www.enefit.lt/elektra/birza?utm_source=palygink&utm_medium=affiliate"
+  },
+  {
+    "id": "elektrum-eko-24",
+    "supplierName": "Elektrum",
+    "planName": "Eko planas 24",
+    "planType": "fixed",
+    "termMonths": 24,
+    "priceEurKwh": 0.205,
+    "monthlyFeeEur": 0.99,
+    "notes": "Žalioji energija su fiksuota kaina",
+    "lastUpdatedISO": "2026-02-13T14:00:00Z",
+    "redirectUrl": "https://www.elektrum.lt/eko-24?utm_source=palygink&utm_medium=affiliate"
+  },
+  {
+    "id": "perlas-fiksuotas-12",
+    "supplierName": "Perlas Energija",
+    "planName": "Fiksuotas 12",
+    "planType": "fixed",
+    "termMonths": 12,
+    "priceEurKwh": 0.185,
+    "monthlyFeeEur": 1.99,
+    "notes": "Gera kaina, bet didesnis mėnesinis mokestis",
+    "lastUpdatedISO": "2026-02-15T12:00:00Z",
+    "redirectUrl": "https://www.perlasenergija.lt/fiksuotas-12?utm_source=palygink&utm_medium=affiliate"
+  }
+]
