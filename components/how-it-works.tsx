@@ -3,39 +3,30 @@ import { Search, LayoutList, ExternalLink } from "lucide-react"
 const steps = [
   {
     icon: Search,
-    title: "Surenkame kainas",
-    text: "Surinkome pasiulymus is pagrindiniu Lietuvos elektros tiekeju.",
+    text: "Surenkame kainas is pagrindiniu Lietuvos elektros tiekeju.",
   },
   {
     icon: LayoutList,
-    title: "Sulyginame",
     text: "Rodome visas kainas vienoje vietoje, surikiuotas nuo pigiausios.",
   },
   {
     icon: ExternalLink,
-    title: "Nukreipiame",
-    text: "Paspaudus mygtuka busi nukreiptas tiesiai i tiekejo puslapi.",
+    text: "Paspaudus nuoroda busi nukreiptas tiesiai i tiekejo puslapi.",
   },
 ]
 
 export function HowItWorks() {
   return (
     <section id="kaip-veikia" className="scroll-mt-20">
-      <h2 className="mb-8 text-center text-lg font-semibold text-foreground md:text-xl">
-        {"Kaip tai veikia?"}
-      </h2>
-
-      <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+      <h3 className="mb-4 text-sm font-semibold text-foreground">{"Kaip tai veikia?"}</h3>
+      <ul className="flex flex-col gap-3">
         {steps.map((step, i) => (
-          <div key={i} className="flex flex-col items-center text-center">
-            <div className="mb-4 flex size-12 items-center justify-center rounded-full bg-secondary text-foreground">
-              <step.icon className="size-5" />
-            </div>
-            <h3 className="mb-1.5 text-sm font-semibold text-foreground">{step.title}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">{step.text}</p>
-          </div>
+          <li key={i} className="flex items-start gap-3">
+            <step.icon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+            <span className="text-sm leading-relaxed text-muted-foreground">{step.text}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   )
 }

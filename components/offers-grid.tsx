@@ -1,18 +1,18 @@
 "use client"
 
-import { useState, useMemo, useEffect, useCallback } from "react"
+import { useMemo, useEffect, useCallback, useState } from "react"
 import type { Offer, PlanType, TermMonths } from "@/types/offer"
 import { sortOffersByEffectivePrice } from "@/lib/offers"
 import { OfferCard } from "@/components/offer-card"
-import { FiltersPanel } from "@/components/filters-panel"
 
 interface OffersGridProps {
   offers: Offer[]
+  planType: PlanType | "all"
+  term: TermMonths | "all"
 }
 
 function getAdaptiveCols(count: number): number {
-  if (count <= 1) return 1
-  if (count === 2) return 2
+  if (count <= 2) return Math.max(count, 1)
   return 3
 }
 
@@ -35,9 +35,7 @@ function useBreakpoint() {
   return bp
 }
 
-export function OffersGrid({ offers }: OffersGridProps) {
-  const [planType, setPlanType] = useState<PlanType | "all">("all")
-  const [term, setTerm] = useState<TermMonths | "all">("all")
+export function OffersGrid({ offers, planType, term }: OffersGridProps) {
   const bp = useBreakpoint()
 
   const filtered = useMemo(() => {
@@ -58,40 +56,29 @@ export function OffersGrid({ offers }: OffersGridProps) {
   }, [bp, filtered.length])
 
   return (
-    <div className="flex flex-col gap-8">
-      {/* Filters */}
-      <FiltersPanel
-        planType={planType}
-        setPlanType={(type) => {
-          setPlanType(type)
-          if (type === "variable") setTerm("all")
-        }}
-        term={term}
-        setTerm={setTerm}
-      />
-
+    <div className="flex flex-col gap-5">
       {/* Section heading */}
       <div className="flex items-baseline justify-between">
-        <h2 className="text-lg font-semibold text-foreground md:text-xl">{"Pasiulymai"}</h2>
-        <span className="text-sm text-muted-foreground">{"Rodoma nuo pigiausio."}</span>
+        <h2 className="text-base font-semibold text-foreground">{"Pasiulymai"}</h2>
+        <span className="text-xs text-muted-foreground">{"Rodoma nuo pigiausio."}</span>
       </div>
 
       {/* Grid */}
       {filtered.length > 0 ? (
         <div
-          className="grid items-stretch gap-6"
+          className="grid items-stretch gap-4"
           style={{
             gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           }}
         >
           {filtered.map((offer, i) => (
-            <div key={offer.id} className="flex h-full">
+            <div key={offer.id} className="flex">
               <OfferCard offer={offer} isCheapest={i === 0} />
             </div>
           ))}
         </div>
       ) : (
-        <div className="rounded-xl border border-dashed border-border bg-secondary p-10 text-center text-sm text-muted-foreground">
+        <div className="rounded-[10px] border border-dashed border-border bg-card p-10 text-center text-sm text-muted-foreground">
           {"Pasiulymu nerasta pagal pasirinktus filtrus."}
         </div>
       )}
