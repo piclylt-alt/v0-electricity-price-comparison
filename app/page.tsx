@@ -1,5 +1,5 @@
 import { getOffers, getLastUpdated } from "@/lib/offers"
-import { OffersList } from "@/components/offers-list"
+import { OffersGrid } from "@/components/offers-grid"
 import { CalendarDays, Zap } from "lucide-react"
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
   const lastUpdated = getLastUpdated(offers)
 
   return (
-    <main className="mx-auto min-h-screen max-w-2xl px-4 py-8 md:py-12">
+    <main className="mx-auto min-h-screen max-w-6xl px-4 py-8 md:px-8 md:py-12">
       {/* Header */}
       <header className="flex flex-col gap-4 pb-8">
         <div className="flex items-center gap-2">
@@ -33,7 +33,7 @@ export default function Home() {
       </header>
 
       {/* Offers */}
-      <OffersList offers={offers} />
+      <OffersGrid offers={offers} />
 
       {/* Affiliate disclosure */}
       <div className="mt-8 rounded-xl bg-muted/50 p-4 text-xs text-muted-foreground">
@@ -47,7 +47,7 @@ export default function Home() {
         <p>{"Informacija pateikiama informaciniais tikslais."}</p>
         <p>{"Prieš sudarant sutartį pasitikrinkite sąlygas pas tiekėją."}</p>
         <p className="mt-2 text-muted-foreground/50">
-          {"SAMPLE DATA – kainos yra demonstracinės ir neatspindi realių tiekėjų pasiūlymų."}
+          {"SAMPLE DATA \u2013 kainos yra demonstracinės ir neatspindi realių tiekėjų pasiūlymų."}
         </p>
       </footer>
     </main>

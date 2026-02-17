@@ -3,14 +3,17 @@
 import type { Offer } from "@/types/offer"
 import { onCardClick } from "@/lib/offers"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { ExternalLink, Zap } from "lucide-react"
 
 interface OfferCardProps {
   offer: Offer
   rank: number
+  isCheapest?: boolean
 }
 
-export function OfferCard({ offer, rank }: OfferCardProps) {
+export function OfferCard({ offer, rank, isCheapest = false }: OfferCardProps) {
   const handleClick = () => {
     onCardClick(offer.id, offer.supplierName)
     window.open(offer.redirectUrl, "_blank", "noopener,noreferrer")
@@ -19,59 +22,89 @@ export function OfferCard({ offer, rank }: OfferCardProps) {
   return (
     <button
       onClick={handleClick}
-      className="group flex w-full items-center gap-4 rounded-xl border border-border bg-card p-4 text-left text-card-foreground transition-colors hover:border-primary/30 hover:bg-accent/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:p-5"
-      aria-label={`${offer.supplierName} – ${offer.planName}: €${offer.priceEurKwh.toFixed(3)}/kWh. Peržiūrėti pasiūlymą.`}
+      className={cn(
+        "group relative flex w-full flex-col rounded-xl border bg-card p-5 text-left text-card-foreground shadow-sm transition-all duration-200",
+        "hover:shadow-md hover:-translate-y-0.5",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        isCheapest
+          ? "border-primary/40 ring-1 ring-primary/20"
+          : "border-border hover:border-primary/20"
+      )}
+      aria-label={`${offer.supplierName} \u2013 ${offer.planName}: \u20AC${offer.priceEurKwh.toFixed(3)}/kWh. Peržiūrėti pasiūlymą.`}
     >
-      {/* Rank */}
-      <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-xs font-bold text-muted-foreground md:size-9 md:text-sm">
-        {"#"}{rank}
+      {/* Rank badge */}
+      {isCheapest ? (
+        <div className="absolute -top-2.5 left-4 flex items-center gap-1 rounded-full bg-primary px-2.5 py-0.5 text-xs font-bold text-primary-foreground">
+          <Zap className="size-3" />
+          <span>{"#1 PIGIAUSIA"}</span>
+        </div>
+      ) : (
+        <div className="absolute -top-2.5 left-4 flex size-5 items-center justify-center rounded-full bg-muted text-xs font-bold text-muted-foreground">
+          {rank}
+        </div>
+      )}
+
+      {/* Top row: supplier + price */}
+      <div className="mt-1 flex items-start justify-between gap-3">
+        <div className="flex min-w-0 flex-col gap-0.5">
+          <span className="text-sm font-bold text-foreground">{offer.supplierName}</span>
+          <span className="truncate text-xs text-muted-foreground">{offer.planName}</span>
+        </div>
+        <div className="flex shrink-0 flex-col items-end">
+          <span className="text-2xl font-bold tracking-tight text-foreground">
+            {"\u20AC"}{offer.priceEurKwh.toFixed(3)}
+          </span>
+          <span className="text-xs text-muted-foreground">{"/kWh"}</span>
+        </div>
       </div>
 
-      {/* Info */}
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-semibold text-foreground md:text-base">
-            {offer.supplierName}
+      {/* Middle: badges and details */}
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        <Badge
+          variant={offer.planType === "fixed" ? "default" : "secondary"}
+          className={cn(
+            "text-[10px] uppercase tracking-wider",
+            offer.planType === "fixed"
+              ? "bg-primary text-primary-foreground"
+              : "bg-secondary text-secondary-foreground"
+          )}
+        >
+          {offer.planType === "fixed" ? "Fiksuota" : "Kintama"}
+        </Badge>
+        {offer.termMonths && (
+          <span className="text-xs text-muted-foreground">
+            {offer.termMonths}{" mėn."}
           </span>
-          <Badge
-            variant={offer.planType === "fixed" ? "default" : "secondary"}
-            className={
-              offer.planType === "fixed"
-                ? "bg-primary text-primary-foreground"
-                : "bg-accent text-accent-foreground"
-            }
-          >
-            {offer.planType === "fixed" ? "FIKSUOTA" : "KINTAMA"}
-          </Badge>
-        </div>
-        <span className="text-xs text-muted-foreground md:text-sm">
-          {offer.planName}
-          {offer.termMonths && (
-            <span className="ml-1">
-              {"· "}{offer.termMonths}{" mėn."}
-            </span>
-          )}
-          {offer.monthlyFeeEur > 0 && (
-            <span className="ml-1">
-              {"· "}{offer.monthlyFeeEur.toFixed(2)}{" €/mėn."}
-            </span>
-          )}
-        </span>
-        {offer.notes && (
-          <span className="text-xs text-muted-foreground/70">{offer.notes}</span>
+        )}
+        {offer.monthlyFeeEur > 0 && (
+          <span className="text-xs text-muted-foreground">
+            {offer.monthlyFeeEur.toFixed(2)}{" \u20AC/mėn."}
+          </span>
         )}
       </div>
 
-      {/* Price */}
-      <div className="flex shrink-0 flex-col items-end gap-1">
-        <span className="text-lg font-bold text-foreground md:text-xl">
-          {"€"}{offer.priceEurKwh.toFixed(3)}
-        </span>
-        <span className="text-xs text-muted-foreground">{"/kWh"}</span>
-      </div>
+      {/* Notes */}
+      {offer.notes && (
+        <p className="mt-2 line-clamp-2 text-xs text-muted-foreground/70">
+          {offer.notes}
+        </p>
+      )}
 
-      {/* Arrow */}
-      <ExternalLink className="size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+      {/* CTA button */}
+      <div className="mt-auto pt-4">
+        <Button
+          variant="default"
+          size="sm"
+          className="pointer-events-none w-full gap-1.5"
+          tabIndex={-1}
+          asChild
+        >
+          <span>
+            {"Peržiūrėti pasiūlymą"}
+            <ExternalLink className="size-3.5" />
+          </span>
+        </Button>
+      </div>
     </button>
   )
 }
