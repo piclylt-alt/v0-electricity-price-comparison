@@ -1,53 +1,50 @@
 import { getOffers, getLastUpdated } from "@/lib/offers"
 import { OffersGrid } from "@/components/offers-grid"
-import { CalendarDays, Zap } from "lucide-react"
+import { HowItWorks } from "@/components/how-it-works"
+import { Leaf } from "lucide-react"
 
 export default function Home() {
   const offers = getOffers()
   const lastUpdated = getLastUpdated(offers)
 
   return (
-    <main className="mx-auto min-h-screen max-w-6xl px-4 py-8 md:px-8 md:py-12">
-      {/* Header */}
-      <header className="flex flex-col gap-4 pb-8">
-        <div className="flex items-center gap-2">
-          <div className="flex size-9 items-center justify-center rounded-lg bg-primary">
-            <Zap className="size-5 text-primary-foreground" />
-          </div>
-          <span className="text-sm font-semibold text-foreground">{"palygink.lt"}</span>
+    <main className="mx-auto min-h-screen max-w-5xl px-5 py-10 md:px-8 md:py-14">
+      {/* Hero header */}
+      <header className="mb-10 rounded-3xl border-2 border-border bg-secondary px-6 py-10 text-center md:px-12 md:py-14">
+        <div className="mx-auto mb-5 flex size-12 items-center justify-center rounded-full bg-accent">
+          <Leaf className="size-6 text-accent-foreground" />
         </div>
 
-        <div className="flex flex-col gap-2">
-          <h1 className="text-balance text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-            {"Elektros kainų palyginimas"}
-          </h1>
-          <p className="text-pretty text-sm text-muted-foreground md:text-base">
-            {"Greitai palygink tiekėjų planus ir pasirink pigiausią."}
-          </p>
-        </div>
+        <h1 className="text-balance text-2xl font-bold leading-tight text-foreground md:text-4xl">
+          {"Rask pigiausią elektros planą Lietuvoje"}
+        </h1>
 
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <CalendarDays className="size-3.5" />
-          <span>{"Atnaujinta: "}{lastUpdated}</span>
-        </div>
+        <p className="mx-auto mt-4 max-w-lg text-pretty text-base text-muted-foreground md:text-lg">
+          {"Palygink tiekėjų kainas ir pasirink tau tinkamiausią planą."}
+        </p>
+
+        <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
+          {"Kainos atnaujinamos reguliariai. Paspausk pasiūlymą ir būsi nukreiptas į tiekėjo svetainę."}
+        </p>
+
+        <p className="mt-4 text-xs text-muted-foreground/70">
+          {"Atnaujinta: "}{lastUpdated}
+        </p>
       </header>
 
       {/* Offers */}
       <OffersGrid offers={offers} />
 
-      {/* Affiliate disclosure */}
-      <div className="mt-8 rounded-xl bg-muted/50 p-4 text-xs text-muted-foreground">
-        <p className="font-medium">
-          {"Paspaudus galime gauti komisinį atlygį. Kaina jums nesikeičia."}
-        </p>
-      </div>
+      {/* How it works */}
+      <HowItWorks />
 
       {/* Disclaimer */}
-      <footer className="mt-6 flex flex-col gap-1 border-t border-border pb-8 pt-6 text-xs text-muted-foreground">
-        <p>{"Informacija pateikiama informaciniais tikslais."}</p>
-        <p>{"Prieš sudarant sutartį pasitikrinkite sąlygas pas tiekėją."}</p>
-        <p className="mt-2 text-muted-foreground/50">
-          {"SAMPLE DATA \u2013 kainos yra demonstracinės ir neatspindi realių tiekėjų pasiūlymų."}
+      <footer className="mt-10 border-t-2 border-border pb-10 pt-6 text-center">
+        <p className="text-sm text-muted-foreground">
+          {"Informacija pateikiama informaciniais tikslais. Prieš pasirašydami sutartį pasitikrinkite sąlygas tiekėjo puslapyje."}
+        </p>
+        <p className="mt-4 text-xs text-muted-foreground/50">
+          {"elektrosplanai.lt"}
         </p>
       </footer>
     </main>

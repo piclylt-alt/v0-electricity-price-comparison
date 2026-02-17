@@ -5,8 +5,6 @@ import type { Offer, PlanType, TermMonths } from "@/types/offer"
 import { sortOffersByEffectivePrice } from "@/lib/offers"
 import { OfferCard } from "@/components/offer-card"
 import { FiltersRow } from "@/components/filters-row"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { Info } from "lucide-react"
 
 interface OffersGridProps {
   offers: Offer[]
@@ -15,8 +13,6 @@ interface OffersGridProps {
 function getAdaptiveCols(count: number): number {
   if (count <= 1) return 1
   if (count === 2) return 2
-  if (count <= 6) return 3
-  if (count <= 9) return 3
   return 3
 }
 
@@ -62,50 +58,32 @@ export function OffersGrid({ offers }: OffersGridProps) {
   }, [bp, filtered.length])
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       {/* Filters */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <FiltersRow
-          planType={planType}
-          setPlanType={(type) => {
-            setPlanType(type)
-            if (type === "variable") setTerm("all")
-          }}
-          term={term}
-          setTerm={setTerm}
-        />
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button
-              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
-              aria-label="Reitingavimo informacija"
-            >
-              <Info className="size-3.5" />
-              <span>{"Kaip reitinguojame?"}</span>
-            </button>
-          </TooltipTrigger>
-          <TooltipContent className="max-w-xs">
-            <p>
-              {"Reitingavimas paremtas supaprastinta formule: kaina/kWh + (mėnesinis mokestis \u00f7 100). Tai apytikslė tvarka \u2013 prieš pasirašydami sutartį, patikrinkite sąlygas pas tiekėją."}
-            </p>
-          </TooltipContent>
-        </Tooltip>
-      </div>
+      <FiltersRow
+        planType={planType}
+        setPlanType={(type) => {
+          setPlanType(type)
+          if (type === "variable") setTerm("all")
+        }}
+        term={term}
+        setTerm={setTerm}
+      />
 
       {/* Grid */}
       {filtered.length > 0 ? (
         <div
-          className="grid gap-4"
+          className="grid gap-5"
           style={{
             gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           }}
         >
           {filtered.map((offer, i) => (
-            <OfferCard key={offer.id} offer={offer} rank={i + 1} isCheapest={i === 0} />
+            <OfferCard key={offer.id} offer={offer} isCheapest={i === 0} />
           ))}
         </div>
       ) : (
-        <div className="rounded-xl border border-dashed border-border p-8 text-center text-sm text-muted-foreground">
+        <div className="rounded-[20px] border-2 border-dashed border-border p-10 text-center text-base text-muted-foreground">
           {"Pasiūlymų nerasta pagal pasirinktus filtrus."}
         </div>
       )}
