@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useCallback } from "react"
 import type { Offer, PlanType, TermMonths } from "@/types/offer"
 import { sortOffersByEffectivePrice } from "@/lib/offers"
 import { OfferCard } from "@/components/offer-card"
-import { FiltersRow } from "@/components/filters-row"
+import { FiltersPanel } from "@/components/filters-panel"
 
 interface OffersGridProps {
   offers: Offer[]
@@ -58,9 +58,9 @@ export function OffersGrid({ offers }: OffersGridProps) {
   }, [bp, filtered.length])
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       {/* Filters */}
-      <FiltersRow
+      <FiltersPanel
         planType={planType}
         setPlanType={(type) => {
           setPlanType(type)
@@ -70,10 +70,16 @@ export function OffersGrid({ offers }: OffersGridProps) {
         setTerm={setTerm}
       />
 
+      {/* Section heading */}
+      <div className="flex items-baseline justify-between">
+        <h2 className="text-xl font-bold text-foreground md:text-2xl">{"Pasiulymai"}</h2>
+        <span className="text-sm text-muted-foreground">{"Rodoma nuo pigiausio."}</span>
+      </div>
+
       {/* Grid */}
       {filtered.length > 0 ? (
         <div
-          className="grid gap-5"
+          className="grid gap-4 md:gap-5"
           style={{
             gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           }}
@@ -83,8 +89,8 @@ export function OffersGrid({ offers }: OffersGridProps) {
           ))}
         </div>
       ) : (
-        <div className="rounded-[20px] border-2 border-dashed border-border p-10 text-center text-base text-muted-foreground">
-          {"Pasiūlymų nerasta pagal pasirinktus filtrus."}
+        <div className="rounded-[20px] border border-dashed border-[#B86A3A]/40 bg-card p-10 text-center text-base text-muted-foreground">
+          {"Pasiulymu nerasta pagal pasirinktus filtrus."}
         </div>
       )}
     </div>
