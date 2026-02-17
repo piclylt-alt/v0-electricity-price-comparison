@@ -7,11 +7,11 @@ const _inter = Inter({ subsets: ["latin"] });
 const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Rask pigiausią elektros planą Lietuvoje – elektrosplanai.lt',
-  description: 'Palygink elektros tiekėjų kainas Lietuvoje paprastai ir greitai. Pasirink tau tinkamiausią planą.',
+  title: 'Pigiausi elektros planai vienoje vietoje – elektrosplanai.lt',
+  description: 'Greitai palygink elektros tiekėjų kainas ir mėnesinį mokestį. Paspausk ir užsisakyk pas tiekėją.',
   openGraph: {
-    title: 'Rask pigiausią elektros planą Lietuvoje',
-    description: 'Palygink elektros tiekėjų kainas Lietuvoje paprastai ir greitai.',
+    title: 'Pigiausi elektros planai vienoje vietoje',
+    description: 'Greitai palygink elektros tiekėjų kainas ir mėnesinį mokestį Lietuvoje.',
     locale: 'lt_LT',
     type: 'website',
   },

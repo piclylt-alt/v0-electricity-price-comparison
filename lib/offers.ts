@@ -22,3 +22,11 @@ export function getLastUpdated(offers: Offer[]): string {
 export function onCardClick(offerId: string, supplierName: string) {
   console.log(`[analytics] Card clicked: ${supplierName} (${offerId})`)
 }
+
+export function formatPriceKwh(price: number): string {
+  return `\u20AC${price.toFixed(3)}`
+}
+
+export function formatMoneyEur(amount: number): string {
+  return `${amount.toFixed(2)} \u20AC`
+}

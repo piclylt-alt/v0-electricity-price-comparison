@@ -79,13 +79,15 @@ export function OffersGrid({ offers }: OffersGridProps) {
       {/* Grid */}
       {filtered.length > 0 ? (
         <div
-          className="grid gap-5 md:gap-6"
+          className="grid items-stretch gap-6"
           style={{
             gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           }}
         >
           {filtered.map((offer, i) => (
-            <OfferCard key={offer.id} offer={offer} isCheapest={i === 0} />
+            <div key={offer.id} className="flex h-full">
+              <OfferCard offer={offer} isCheapest={i === 0} />
+            </div>
           ))}
         </div>
       ) : (

@@ -16,15 +16,11 @@ export default function Home() {
         {/* Hero */}
         <header className="pb-10 pt-16 text-center md:pb-14 md:pt-24">
           <h1 className="text-balance text-3xl font-bold leading-tight text-foreground md:text-5xl">
-            {"Rask pigiausią elektros planą Lietuvoje"}
+            {"Pigiausi elektros planai \u2013 vienoje vietoje"}
           </h1>
 
           <p className="mx-auto mt-5 max-w-lg text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
-            {"Palygink tiekėjų kainas vienoje vietoje."}
-          </p>
-
-          <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-            {"Paspaudus pasiūlymą būsite nukreipti į tiekėjo puslapį."}
+            {"Greitai palygink kain\u0105 ir m\u0117nesin\u012F mokest\u012F. Paspausk ir u\u017Eisakyk pas tiek\u0117j\u0105."}
           </p>
 
           <div className="mx-auto mt-6 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
