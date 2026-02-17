@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
@@ -14,14 +14,14 @@ export function TopNav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[#B86A3A]/20 bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 md:px-8">
+    <nav className="sticky top-0 z-50 border-b border-border bg-background">
+      <div className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-5 md:px-8">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5">
-          <div className="flex size-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-sm font-bold text-primary-foreground">{"EP"}</span>
+          <div className="flex size-8 items-center justify-center rounded-lg bg-primary">
+            <Zap className="size-4 text-primary-foreground" />
           </div>
-          <span className="text-base font-bold text-foreground">{"elektrosplanai.lt"}</span>
+          <span className="text-sm font-semibold text-foreground">{"elektrosplanai.lt"}</span>
         </a>
 
         {/* Desktop links */}
@@ -30,7 +30,7 @@ export function TopNav() {
             <a
               key={link.href}
               href={link.href}
-              className="relative text-base text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+              className="relative text-sm text-muted-foreground transition-colors hover:text-[#0F3D2E] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#0F3D2E] after:transition-all hover:after:w-full"
             >
               {link.label}
             </a>
@@ -40,18 +40,18 @@ export function TopNav() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setOpen(!open)}
-          className="flex size-11 items-center justify-center rounded-xl text-foreground md:hidden"
-          aria-label={open ? "Uždaryti meniu" : "Atidaryti meniu"}
+          className="flex size-11 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-secondary md:hidden"
+          aria-label={open ? "Uzdaryti meniu" : "Atidaryti meniu"}
           aria-expanded={open}
         >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
 
       {/* Mobile dropdown */}
       <div
         className={cn(
-          "overflow-hidden border-t border-[#B86A3A]/20 bg-background transition-all duration-200 md:hidden",
+          "overflow-hidden border-t border-border bg-background transition-all duration-200 md:hidden",
           open ? "max-h-60" : "max-h-0 border-t-0"
         )}
       >
@@ -61,7 +61,7 @@ export function TopNav() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-secondary"
+              className="rounded-lg px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               {link.label}
             </a>

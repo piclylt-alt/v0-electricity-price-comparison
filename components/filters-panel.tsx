@@ -13,23 +13,23 @@ interface FiltersPanelProps {
 const planTypeOptions: { value: PlanType | "all"; label: string }[] = [
   { value: "all", label: "Visi" },
   { value: "fixed", label: "Fiksuota kaina" },
-  { value: "variable", label: "Kintama (pagal birža)" },
+  { value: "variable", label: "Kintama (birza)" },
 ]
 
 const termOptions: { value: TermMonths | "all"; label: string }[] = [
   { value: "all", label: "Visi" },
-  { value: 12, label: "12 menesių" },
+  { value: 12, label: "12 menesiu" },
   { value: 24, label: "24 menesiai" },
   { value: 36, label: "36 menesiai" },
 ]
 
 export function FiltersPanel({ planType, setPlanType, term, setTerm }: FiltersPanelProps) {
   return (
-    <div className="rounded-[20px] border border-[#B86A3A]/30 bg-card px-5 py-6 md:px-8 md:py-7">
-      <div className="flex flex-col gap-6 lg:flex-row lg:gap-10">
+    <div className="rounded-xl bg-secondary px-5 py-6 md:px-8 md:py-7">
+      <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
         {/* Plan type */}
         <div className="flex flex-col gap-2.5">
-          <span className="text-sm font-semibold text-foreground">{"Kainos tipas"}</span>
+          <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{"Kainos tipas"}</span>
           <div className="flex flex-wrap items-center gap-2" role="radiogroup" aria-label="Kainos tipas">
             {planTypeOptions.map((option) => (
               <button
@@ -38,11 +38,11 @@ export function FiltersPanel({ planType, setPlanType, term, setTerm }: FiltersPa
                 aria-checked={planType === option.value}
                 onClick={() => setPlanType(option.value)}
                 className={cn(
-                  "min-h-[44px] rounded-full px-5 py-2.5 text-sm font-medium transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-card",
+                  "min-h-[44px] rounded-full px-5 py-2.5 text-sm font-medium transition-all",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F3D2E] focus-visible:ring-offset-2 focus-visible:ring-offset-secondary",
                   planType === option.value
-                    ? "bg-primary text-primary-foreground"
-                    : "border border-[#B86A3A]/60 text-[#3B2F2A] hover:border-primary"
+                    ? "bg-[#0F3D2E] text-[#FFFFFF]"
+                    : "border border-border bg-background text-foreground hover:border-[#0F3D2E]/40"
                 )}
               >
                 {option.label}
@@ -54,7 +54,7 @@ export function FiltersPanel({ planType, setPlanType, term, setTerm }: FiltersPa
         {/* Term filter */}
         {planType !== "variable" && (
           <div className="flex flex-col gap-2.5">
-            <span className="text-sm font-semibold text-foreground">{"Sutarties trukme"}</span>
+            <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{"Sutarties trukme"}</span>
             <div className="flex flex-wrap items-center gap-2" role="radiogroup" aria-label="Sutarties trukme">
               {termOptions.map((option) => (
                 <button
@@ -63,11 +63,11 @@ export function FiltersPanel({ planType, setPlanType, term, setTerm }: FiltersPa
                   aria-checked={term === option.value}
                   onClick={() => setTerm(option.value)}
                   className={cn(
-                    "min-h-[44px] rounded-full px-5 py-2.5 text-sm font-medium transition-colors",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-card",
+                    "min-h-[44px] rounded-full px-5 py-2.5 text-sm font-medium transition-all",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F3D2E] focus-visible:ring-offset-2 focus-visible:ring-offset-secondary",
                     term === option.value
-                      ? "bg-primary text-primary-foreground"
-                      : "border border-[#B86A3A]/60 text-[#3B2F2A] hover:border-primary"
+                      ? "bg-[#0F3D2E] text-[#FFFFFF]"
+                      : "border border-border bg-background text-foreground hover:border-[#0F3D2E]/40"
                   )}
                 >
                   {option.label}

@@ -58,7 +58,7 @@ export function OffersGrid({ offers }: OffersGridProps) {
   }, [bp, filtered.length])
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       {/* Filters */}
       <FiltersPanel
         planType={planType}
@@ -72,14 +72,14 @@ export function OffersGrid({ offers }: OffersGridProps) {
 
       {/* Section heading */}
       <div className="flex items-baseline justify-between">
-        <h2 className="text-xl font-bold text-foreground md:text-2xl">{"Pasiulymai"}</h2>
+        <h2 className="text-lg font-semibold text-foreground md:text-xl">{"Pasiulymai"}</h2>
         <span className="text-sm text-muted-foreground">{"Rodoma nuo pigiausio."}</span>
       </div>
 
       {/* Grid */}
       {filtered.length > 0 ? (
         <div
-          className="grid gap-4 md:gap-5"
+          className="grid gap-5 md:gap-6"
           style={{
             gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           }}
@@ -89,7 +89,7 @@ export function OffersGrid({ offers }: OffersGridProps) {
           ))}
         </div>
       ) : (
-        <div className="rounded-[20px] border border-dashed border-[#B86A3A]/40 bg-card p-10 text-center text-base text-muted-foreground">
+        <div className="rounded-xl border border-dashed border-border bg-secondary p-10 text-center text-sm text-muted-foreground">
           {"Pasiulymu nerasta pagal pasirinktus filtrus."}
         </div>
       )}

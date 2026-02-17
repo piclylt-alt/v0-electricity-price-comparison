@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'Palygink elektros tiekėjų kainas Lietuvoje paprastai ir greitai. Pasirink tau tinkamiausią planą.',
   openGraph: {
     title: 'Rask pigiausią elektros planą Lietuvoje',
-    description: 'Palygink elektros tiekėjų kainas Lietuvoje paprastai ir greitai. Pasirink tau tinkamiausią planą.',
+    description: 'Palygink elektros tiekėjų kainas Lietuvoje paprastai ir greitai.',
     locale: 'lt_LT',
     type: 'website',
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#CA7842',
+  themeColor: '#0F3D2E',
   width: 'device-width',
   initialScale: 1,
 }
